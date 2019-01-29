@@ -10,14 +10,7 @@ const server = new GraphQLServer({
   resolvers: resolvers,
   context: (args) => {
     const req = args.request
-    return {
-      models: require("./models"),
-      userName: req.session ? req.session.userName : null,
-      setUserName: (name) => {
-        req.session.userName = name
-        req.session.save()
-      }
-    }
+    return {}
   }
 })
 

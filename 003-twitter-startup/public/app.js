@@ -118,8 +118,6 @@ decorate(Store,{
 })
 
 const s = new Store()
-s.loadTimeline()
-s.loadUsers()
 
 const Login = observer(class Login extends React.Component {
   render() {
@@ -170,6 +168,7 @@ const Dashboard = observer(
                       onSubmit={(e) => {
                         e.preventDefault()
                         s.tweet(document.getElementById("tweet-message").value)
+                        document.getElementById("tweet-message").value = ""
                       }}
                     >
                       <textarea
@@ -194,7 +193,7 @@ const Dashboard = observer(
                 {
                   s.users.map((user) => {
                     return (
-                      <div className="card" key={user.name}>
+                      <div className="card mb-2" key={user.name}>
                         <div
                           className="card-body p-2"
                         >
