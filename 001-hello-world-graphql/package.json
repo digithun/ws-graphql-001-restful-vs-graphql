@@ -1,0 +1,20 @@
+{
+  "name": "001-hello-world-schema",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "execute": "node execute.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "graphql": "^14.1.1",
+    "graphql-yoga": "^1.17.1",
+    "json-beautify": "^1.0.1",
+    "json-colorz": "^0.2.7"
+  }
+}
