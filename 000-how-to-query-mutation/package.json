@@ -1,0 +1,29 @@
+{
+  "name": "003-start-up",
+  "version": "1.0.0",
+  "description": "``` npm install ```",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "db:try": "node try.js",
+    "db": "node db.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "connect-mongo": "^2.0.3",
+    "dataloader": "^1.4.0",
+    "express-session": "^1.15.6",
+    "graphql-yoga": "^1.17.1",
+    "json-colorz": "^0.2.7",
+    "mongo-in-memory": "0.0.5",
+    "mongodb": "^3.1.13",
+    "mongoose": "^5.4.7",
+    "time-ago": "^0.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
