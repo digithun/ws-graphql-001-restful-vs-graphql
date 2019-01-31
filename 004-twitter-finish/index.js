@@ -13,19 +13,10 @@ const server = new GraphQLServer({
   context: (args) => {
     const req = args.request
     const userName = req.session ? req.session.userName : null
-    const isFollowingLoader = new DataLoader(async (keys) => {
-      if (!userName) {
-        return keys.map(() => false)
-      }
-      const followingUsers = await models.UserFollowing.find({
-        userName: userName,
-        followingName: { $in: keys }
-      })
-      return keys.map((key) => {
-        const followingUser = followingUsers.find((_f) => {
-          return _f.followingName === key
-        })
-        return followingUser !== undefined
+    const userLoader = new DataLoader(async (userNames) => {
+      const users = await models.User.find({ name: { $in: userNames } })
+      return userNames.map((userName) => {
+        return users.find((user) => user.name === userName)
       })
     })
     return {
@@ -35,7 +26,7 @@ const server = new GraphQLServer({
         req.session.userName = name
         req.session.save()
       },
-      isFollowingLoader,
+      userLoader,
     }
   }
 })

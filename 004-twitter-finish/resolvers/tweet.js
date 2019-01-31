@@ -2,8 +2,8 @@ const models = require("../models")
 const timeAgo = require("time-ago/timeago")
 
 module.exports = {
-  user(source) {
-    return models.User.findOne({ name: source.userName })
+  user(source, args, context) {
+    return context.userLoader.load(source.userName)
   },
   since(source) {
     return timeAgo.ago(source.createdAt)

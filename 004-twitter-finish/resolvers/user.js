@@ -20,14 +20,13 @@ module.exports = {
     return models.Tweet.find({ userName: { $in: followingNames } }).sort({ createdAt: -1 })
   },
   async isFollowing(source, args, context) {
-    // if (!context.userName) {
-    //   return false
-    // }
-    // const following =  await models.UserFollowing.findOne({
-    //   userName: context.userName,
-    //   followingName: source.name,
-    // })
-    // return following !== null
-    return context.isFollowingLoader.load(source.name)
+    if (!context.userName) {
+      return false
+    }
+    const following =  await models.UserFollowing.findOne({
+      userName: context.userName,
+      followingName: source.name,
+    })
+    return following !== null
   }
 }
